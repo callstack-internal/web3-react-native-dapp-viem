@@ -36,6 +36,3 @@ yarn-error.*
 
 # JetBrains
 .idea
-
-# rn-nodeify
-shim.js
