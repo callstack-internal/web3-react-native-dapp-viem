@@ -1,0 +1,42 @@
+{
+  "name": "react-native-viem",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "1.18.2",
+    "@react-native-community/netinfo": "9.3.10",
+    "@walletconnect/modal-react-native": "^1.0.0-rc.11",
+    "expo": "~49.0.13",
+    "expo-status-bar": "~1.6.0",
+    "fastestsmallesttextencoderdecoder": "^1.0.22",
+    "react": "18.2.0",
+    "react-native": "0.72.5",
+    "react-native-get-random-values": "^1.9.0",
+    "react-native-modal": "^13.0.1",
+    "react-native-svg": "13.9.0",
+    "viem": "^1.16.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@callstack/eslint-config": "^14.0.0",
+    "@types/react": "~18.2.14",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "private": true,
+  "expo": {
+    "install": {
+      "exclude": [
+        "react-native-get-random-values"
+      ]
+    }
+  }
+}
