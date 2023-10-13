@@ -1,21 +1,14 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {Address, Chain, createWalletClient, custom, formatEther} from 'viem';
-import {mainnet, sepolia} from 'viem/chains';
-import {useWalletConnectModal} from '@walletconnect/modal-react-native';
-import {publicClient} from '../clients/public';
+import React, { useEffect, useMemo, useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { Address, Chain, createWalletClient, custom, formatEther } from 'viem';
+import { mainnet, sepolia } from 'viem/chains';
+import {
+  useWalletConnectModal,
+  IProvider,
+} from '@walletconnect/modal-react-native';
+import { publicClient } from '../clients/public';
 
 export const CHAINS = [mainnet, sepolia];
-
-type ConnectEventInfo = {
-  session: {
-    namespaces: {
-      eip155: {
-        chains: `eip155:${number}`[];
-      };
-    };
-  };
-};
 
 export default function HomePage() {
   const {
@@ -31,8 +24,8 @@ export default function HomePage() {
       createWalletClient({
         chain: mainnet,
         transport: custom({
-          async request({method, params}) {
-            return await provider?.request({method, params});
+          async request({ method, params }) {
+            return await provider?.request({ method, params });
           },
         }),
       }),
@@ -77,13 +70,19 @@ export default function HomePage() {
       setChain(chain);
     };
 
-    const onConnectEvent = async (info: ConnectEventInfo) => {
-      const chainId = info.session.namespaces.eip155.chains[0].replace(
+    const onConnectEvent = async ({
+      session,
+    }: {
+      session: IProvider['session'];
+    }) => {
+      const chainId = session?.namespaces.eip155.chains?.[0].replace(
         'eip155:',
         '',
       );
 
-      onChainChangedEvent(chainId);
+      if (chainId) {
+        onChainChangedEvent(chainId);
+      }
 
       if (address) {
         const balance = await publicClient.getBalance({

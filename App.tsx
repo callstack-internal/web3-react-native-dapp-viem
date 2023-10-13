@@ -1,10 +1,10 @@
 import './polyfills';
 import React from 'react';
-import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, View} from 'react-native';
-import {WalletConnectModal} from '@walletconnect/modal-react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View } from 'react-native';
+import { WalletConnectModal } from '@walletconnect/modal-react-native';
 import HomePage from './src/pages/HomePage';
-import {providerMetadata} from './src/clients/walletConnect';
+import { providerMetadata } from './src/clients/walletConnect';
 
 export default function App() {
   return (
